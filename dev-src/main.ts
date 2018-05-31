@@ -6,7 +6,7 @@ import { View } from "./View";
 
 var emp1: Employee = new Employee("Marie Stephanie", "Alesna", "s.alesna@netsystem.cz");
 
- var model :Model = new Model(),
+ var model :Model = new Model(emp1),
     view = new View(null, {
             'empTbl': $('#displayEmp')
     }),

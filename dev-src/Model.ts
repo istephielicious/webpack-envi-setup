@@ -15,7 +15,7 @@ export class Model implements PrintLogger{
 
     constructor (emp?:Employee) {
         printLog(this, "Model::Create");
-       // this.employee.push(emp);
+        this.employee.push(emp);
     }
     
     getEmployees() : Employee[] {

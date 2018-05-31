@@ -23,7 +23,7 @@ export class View implements PrintLogger{
         this.elements = elements;
 
         var _this = this;
-        //Attach model listeners.
+        // Attach model listeners.
         this.model.newEmpadded.attach(function() {
             _this.updateEmpTable();
         });
