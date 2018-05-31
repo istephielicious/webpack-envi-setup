@@ -1,0 +1,19 @@
+{
+  "name": "using-webpack-sample",
+  "version": "1.0.0",
+  "description": "webpack setup",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "istephielicious@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "webpack": "^4.10.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^2.1.4"
+  }
+}
