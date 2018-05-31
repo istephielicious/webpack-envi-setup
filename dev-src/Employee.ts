@@ -1,4 +1,3 @@
-import { Logger } from "mongodb";
 import { PrintLogger, printLog } from "./Logger";
 
  class Person {

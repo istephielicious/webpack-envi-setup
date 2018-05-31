@@ -10,7 +10,7 @@ export class Controller {
         this.view = view;
 
         var _this = this;
-        this.view.empModified.attach(function (sender, args) {
+        this.view.empModified.attach(function (sender: any, args: any) {
             setCurrentIndex(args.currIndx);
         }); 
     }

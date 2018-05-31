@@ -33,7 +33,7 @@ export class View {
             selectionMode: 'single',
             datasource: _this.model.getEmployees(),
             rowSelect: 
-            function(event, personalInfo) {
+            function(event:any, personalInfo:any) {
                 var currIndx = personalInfo.empIndex;
                 if(currIndx == undefined) {
                     currIndx = -1;
@@ -46,7 +46,7 @@ export class View {
                 
             },
             rowUnselect:
-            function(event, personalInfo) {
+            function(event:any, personalInfo:any) {
                 var currIndx = -1;
                 _this.removeEmpUnselected();
                 _this.empModified.notify({event, currIndx});
