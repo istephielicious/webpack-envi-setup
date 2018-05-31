@@ -8,7 +8,7 @@ import { PrintLogger, printLog } from "./Logger";
 export class View implements PrintLogger{
     log: string;
     private model : Model = null;
-    private elements :any = {};
+    public elements :any = {};
 
     //Events.
     public empModified : Event = new Event(this);
@@ -68,6 +68,7 @@ export class View implements PrintLogger{
         var table :any = this.elements.empTbl;
         table.puidatatable('option','datasource', this.model.getEmployees());
         table.puidatatable('reload');
+        printLog(this, "View::updateEmpTable out");
     }
     public displayEmpSelected(personalInfo: Employee) {
         printLog(this, "View::displayEmpSelected");
