@@ -5,11 +5,131 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- /CSS files. -->
     <link rel="stylesheet" type="text/css" media="screen" href="../main.css" />
+    <link rel="stylesheet" href="../node_modules/jquery-ui-dist/jquery-ui.css" />
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../node_modules/primeui/primeui-all.css" />
     <!-- <script src="https://unpkg.com/lodash@4.16.6"></script> -->
+
+     <!-- /JS files. -->
+     <script type="application/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
+     <script type="application/javascript" src="../node_modules/jquery-ui-dist/jquery-ui.js"></script>
+     <script type="application/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+     <script type="application/javascript" src="../node_modules/primeui/primeui-all.js"></script>
     
 </head>
 <body>
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#emp">Employees</a></li>
+                    <li><a data-toggle="tab" href="#msgs">Messages</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Orders</a></li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="tab-content">
+                        <div id="emp" class="tab-pane fade in active">                     
+                            <div class="row">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="lastname">Last Name</label>
+                                        <input type="lastname" class="form-control" id="lastname" placeholder="Enter Last name" name="lastname">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="firstname">First Name</label>
+                                        <input type="firstname" class="form-control" id="firstname" placeholder="Enter First name" name="firstname">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                                    </div>
+                                    <button type="button" class="btn btn-default btnSubmit">Submit</button>
+                                    <button type="button" class="btn btn-default btnReset">Reset</button>
+                                    <button type="button" class="btn btn-default btnEdit" disabled="true">Update</button>
+                                </form>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <label for="search">Search</label>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="search" class="form-control" id="search" placeholder="Enter Employee to search and press Enter" name="search">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div id="displayEmp">
+                                        <!--/Display employees -->
+                                    </div>
+                                </div> <!-- /end row -->
+                            </div> <!--/end row-->                
+                        </div>
+        
+                    <!--/MESSAGES -->
+                    <div id="msgs" class="tab-pane fade">
+                        <div class="panel panel-info widget">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <span class="glyphicon glyphicon-comment"></span>
+                                        <h3 class="panel-title">Messages</h3>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form class="search-form">
+                                            <div class="form-group has-feedback">
+                                                <label for="search" class="sr-only">Search</label>
+                                                <input type="text" class="form-control" id="searchMsg"name="searcheee" placeholder="search message by ID ">
+                                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                            </div>
+                                        </form>    
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-primary btnCompose" data-toggle="modal" data-target="#modalCompose">Compose Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div id="remotegrid"></div>
+                                <template id="msgTemp">
+                                    <div class="ui-panel ui-widget ui-widget-content ui-corner-all">
+                                        <div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
+                                            <span class="ui-panel-title">{{subject}}</span>
+                                        </div>
+                                        <div class="ui-panel-content ui-widget-content">
+                                            <div class="row">
+                                                <div class="col-xs-2 col-md-1">
+                                                    <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" />
+                                                </div>
+                                                <div class="col-xs-10 col-md-11">
+                                                    <div class="msg-info">
+                                                    From: <a href="#" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="{{from_employee.email}}">
+                                                        {{from_employee.firstname}} {{from_employee.lastname}}</a> on {{created}} <br>
+                                                        To: {{#to_employees}}<a href="#" data-toggle="popover" data-trigger="hover" data-placement="bottom" 
+                                                        data-content="{{firstname}} {{lastname}}">{{email}}</a> {{/to_employees}}{{^to_employees}}
+                                                        No recipient {{/to_employees}}
+                                                    </div>
+                                                    <div class="msg-body">
+                                                        {{body}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div> <!--/PANEL END -->
+                    </div>
+            
+                </div>
+            </div>
+            
+                
+        </div>
+    </div>
+
     <!-- <script src="./src/index.js"></script> -->
     <script src="bundle.js"></script>
 </body>
