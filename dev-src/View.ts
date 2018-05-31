@@ -1,10 +1,13 @@
 import {Employee} from "./Employee";
 import {Model} from "./Model";
 import {Event} from "./Event";
+//Logger
+import { PrintLogger, printLog } from "./Logger";
 
 
-export class View {
-    private model : any;
+export class View implements PrintLogger{
+    log: string;
+    private model : Model;
     private elements :any;
 
     //Events.
@@ -15,6 +18,7 @@ export class View {
     public resetButtonClicked :Event = new Event(this);
 
     constructor(model: Model, elements: any) {
+        printLog(this, "View::Create");
         this.model = model;
         this.elements = elements;
 
@@ -55,16 +59,18 @@ export class View {
 
     }
     public display() {
+        printLog(this, "View::display");
         this.updateEmpTable();
     }
 
     public updateEmpTable() {
+        printLog(this, "View::updateEmpTable");
         var table :any = this.elements.empTbl;
         table.puidatatable('option','datasource', this.model.getEmployees());
         table.puidatatable('reload');
     }
     public displayEmpSelected(personalInfo: Employee) {
-        console.log("View:displayEmpSelected()");
+        printLog(this, "View::displayEmpSelected");
         //Display Selected Employee info.
         this.elements.btnEmpEdit.attr("disabled", false);
         this.elements.btnAddEmp.attr("disabled", true); 
@@ -73,7 +79,7 @@ export class View {
         this.elements.txtEmail.val(personalInfo.getEmail());
     }
     public removeEmpUnselected() {
-        console.log("View:removeEmpUnselected()");
+        printLog(this, "View::removeEmpUnselected");
         this.resetFields();     
     }
     public resetFields () {
