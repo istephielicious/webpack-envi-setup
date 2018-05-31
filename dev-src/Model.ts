@@ -5,19 +5,19 @@ import { PrintLogger, printLog } from "./Logger";
 
 export class Model implements PrintLogger{
     log: string;
-    private employee :Array<Employee>;
+    private employee :Employee[] = [];
     private selectedIndx : number = -1;
+
+    constructor (emp?:Employee) {
+        printLog(this, "Model::Create");
+        this.employee.push(emp);
+    }
 
     //Events.
     public newEmpadded :Event = new Event(this);
     public empEdited :Event = new Event(this);
     public empSearched :Event = new Event(this);
 
-    constructor (emp?:Employee) {
-        printLog(this, "Model::Create");
-        this.employee.push(emp);
-    }
-    
     getEmployees() : Employee[] {
         printLog(this, "Model:getEmployees()");
         return this.employee;
