@@ -1,6 +1,6 @@
 export class Event {
     private _sender : any;
-    private _listeners : any[];
+    private _listeners : any[] = [];
 
     constructor(sender : any) {
         this._sender = sender;

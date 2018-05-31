@@ -7,8 +7,8 @@ import { PrintLogger, printLog } from "./Logger";
 
 export class View implements PrintLogger{
     log: string;
-    private model : Model;
-    private elements :any;
+    private model : Model = null;
+    private elements :any = {};
 
     //Events.
     public empModified : Event = new Event(this);
@@ -17,14 +17,15 @@ export class View implements PrintLogger{
     public searchEmpKeypressed :Event = new Event(this);
     public resetButtonClicked :Event = new Event(this);
 
-    constructor(model: Model, elements: any) {
+    constructor(mdel: Model, elements: any) {
         printLog(this, "View::Create");
-        this.model = model;
+        this.model = mdel;
         this.elements = elements;
-
+    
         var _this = this;
         // Attach model listeners.
         this.model.newEmpadded.attach(function() {
+            
             _this.updateEmpTable();
         });
         this.elements.empTbl.puidatatable({
@@ -56,7 +57,6 @@ export class View implements PrintLogger{
                 _this.empModified.notify({event, currIndx});
             }
         });
-
     }
     public display() {
         printLog(this, "View::display");

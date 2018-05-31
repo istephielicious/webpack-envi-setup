@@ -49,7 +49,7 @@ export class Model implements PrintLogger{
     }
     searchEmployee (searchTxt: string) {
         // searchEmployee : (searchTxt: string) => void = function(searchTxt: string) {
-        var srchResult : Employee[];
+        var srchResult : Employee[] =[];
         let itr : number = 0;
         for(;itr< this.employee.length;itr++){
             let fName = this.employee[itr].getFname();
